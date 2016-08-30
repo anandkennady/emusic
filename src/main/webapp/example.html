@@ -1,0 +1,238 @@
+
+
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>signup</title>
+<link href="resources/css/style.css" rel="stylesheet">
+<link rel="stylesheet type=" text/css" href="resources/css/style.css">
+ 
+
+ <div style="background-color:aqua;height:5px;">
+<meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />  
+<meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form. " />  
+<link rel='stylesheet' href='style.css' type='text/css' /> 
+
+
+ 
+<script>
+function formValidation()  
+{  
+ 
+var passid = document.registration.passid;  
+var uname = document.registration.username;
+var udob = document.registration.dob;
+var uadd = document.registration.address;  
+var ucountry = document.registration.country; 
+var uphonenum = document.registration.phonenum; 
+var uemail = document.registration.email;  
+var umgender = document.registration.mgender;  
+var ufgender = document.registration.fgender; if(userid_validation(uid,5,12))  
+{  
+if(passid_validation(passid,7,12))  
+{  
+if(allLetter(uname))
+	{
+	if(ValidateBob(udob)) 
+{  
+if(alphanumeric(uadd))  
+{   
+if(countryselect(ucountry))  
+ 
+{  
+if(ValidateEmail(uemail))  
+	{
+	if(Validphonenum(uphonenum))
+	
+{  
+if(validgender(umgender,ufgender))  
+{  
+}
+}
+}   
+}  
+}   
+}  
+}  
+}  
+}  
+return false;  
+  
+} 
+function passid_validation(passid,mx,my)  
+{  
+var passid_len = passid.value.length;  
+if (passid_len == 0 ||passid_len >= my || passid_len < mx)  
+{  
+alert("Password should not be empty / length be between "+mx+" to "+my);  
+passid.focus();  
+return false;  
+}  
+return true;  
+}  
+function allLetter(uname)  
+{   
+var letters = /^[A-Za-z]+$/;  
+if(uname.value.match(letters))  
+{  
+return true;  
+}  
+else  
+{  
+alert('Username must have alphabet characters only');  
+uname.focus();  
+return false;  
+}  
+}
+
+
+function alphanumeric(uadd)  
+{   
+var letters = /^[0-9a-zA-Z]+$/;  
+if(uadd.value.match(letters))  
+{  
+return true;  
+}  
+else  
+{  
+alert('User address must have alphanumeric characters only');  
+uadd.focus();  
+return false;  
+}  
+}  
+function countryselect(ucountry)  
+{  
+if(ucountry.value == "Default")  
+{  
+alert('Select your country from the list');  
+ucountry.focus();  
+return false;  
+}  
+else  
+{  
+return true;  
+}  
+}  
+    
+function ValidateEmail(uemail)  
+{  
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+if(uemail.value.match(mailformat))  
+{  
+return true;  
+}  
+else  
+{  
+alert("You have entered an invalid email address!");  
+uemail.focus();  
+return false;  
+}  
+} function validsex(umgender,ufgender)  
+{  
+x=0;  
+  
+if(umgender.checked)   
+{  
+x++;  
+} if(ufgender.checked)  
+{  
+x++;   
+}  
+if(x==0)  
+{  
+alert('Select Male/Female');  
+umgender.focus();  
+return false;  
+}  
+else  
+{  
+alert('Form Succesfully Submitted');  
+window.location.reload()  
+return true;  
+}  
+}  
+</script>  
+</head>
+
+<body id="li" style bgcolor="aqua">
+
+<center><div style="background-color:aqua; height:90px;"><b id="g"><marquee>SignUp</marquee></b></center>  
+<body onload="document.registration.userid.focus();">  
+<h1>Sign Up</h1>    
+<form name='registration' onSubmit="return homepage">  
+<ul>
+  
+<li><label for="username">Name:*</label></li>  
+<li><input type="text" name="username" size="50" /></li> 
+<form name="ProcessInfo" action="#" method="POST" enctype="multipart/form-data" target="_self" onsubmit="return checkForm();">
+
+<li><label for="passid">Password:*</label></li>  
+<li><input type="password" name="passid" size="12" /></li>  
+
+<li><label for="txtDOB">DOB:* </label></li>
+<li><input id="txtDOB" type="date" name="txtDOB" size="12"></li>
+
+<li><label for="address">Address:*</label></li>  
+<li><input type="text" name="address" size="80" /></li>
+<li><label for="city">City:*</label></li>  
+<li><select name="city">  
+<option selected="" value="Default">(Please select a city)</option>  
+<option value="Cbe">Coimbatore</option>  
+<option value="Oty">Ooty</option>  
+<option value="Mdr">Chennai</option>  
+<option value="Tr">Thanjavur</option>  
+<option value="Try">Trichy</option>  
+</select></li>  
+ 
+ <li><label for="state">State:*</label></li>  
+<li><select name="state">  
+<option selected="" value="Default">(Please select a state)</option>  
+<option value="tn">Tamilnadu</option>  
+<option value="Ap">AndhraPradesh</option>  
+<option value="kl">Kerala</option>  
+<option value="Ka">Karnataka</option>  
+ 
+</select></li>
+<li><label for="country">Country:*</label></li>  
+<li><select name="country">  
+<option selected="" value="Default">(Please select a country)</option>  
+<option value="AF">India</option>  
+<option value="AL">Canada</option>  
+<option value="DZ">Australia</option>  
+<option value="AS">Russia</option>  
+<option value="AD">USA</option>  
+</select></li>  
+  
+<li><label for="email">Email:*</label></li>  
+<li><input type="text" name="email" size="50" /></li>  
+<li><label for="phonenum">Ph Num:*</label></li>  
+<li><input type="text" name="phonenum" size="50" /></li> 
+<li><label id="gender">Gender:*</label></li> 
+
+ 
+<li><input type="radio" name="mgender" value="Male" /><span>Male</span></li>  
+<li><input type="radio" name="fgender" value="Female" /><span>Female</span></li>  
+ 
+  
+<li><input type="submit" name="submit" value="Submit" /></li>  
+</ul>  
+</form>  
+
+
+
+ 
+ 
+ <img src="resources/images/a14.jpg" height="350" width="600"></a>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="login"><b>SignIn With Another Account</b></a></center>
+<br>
+
+
+<br>
+<div style="background-color:aqua;height:5px;"></div>
+</body>
+</html>
